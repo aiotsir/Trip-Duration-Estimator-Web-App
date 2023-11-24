@@ -5,3 +5,9 @@
 
 
 The Machine Learning part of this project is in my this repository - https://github.com/aiotsir/LGBM-Trip-Duration-Prediction-ML
+
+
+## Usage
+Open the app in your web browser.
+Enter relevant details, such as pickup date and time and distance.
+Click the "Predict Trip Duration" button to get the estimated trip duration.
