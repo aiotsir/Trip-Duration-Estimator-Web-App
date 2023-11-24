@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trip Duration Predictor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('/static/css/img/bottom.png'); 
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+        }
+        .container {
+            padding: 50px;
+        }
+        .header {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group-prepend img {
+            width: 30px;
+            height: 30px;
+        }
+        .btn-predict {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .output {
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- <h1>Trip Duration Predictor</h1> -->
+            <p>Enter the details below to get an estimate of your trip duration.</p>
+        </div>
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="input-group">
+                
+                <input type="text" name="vendor_id" placeholder="Vendor id (Uber : 1, Ola :2, Speeder :3, Cheetah : 4)" class="form-control" required>
+            </div>
+            <div class="input-group">
+                
+                <input type="text" name="pickup_hour" placeholder="Pickup Hour (enter hours as a number 0 to 23)" class="form-control" required>
+            </div>
+            <div class="input-group">
+                
+                <input type="text" name="pickup_day" placeholder="Pickup Day (enter day of the week as number)" class="form-control" required>
+            </div>
+          
+            <div class="input-group">
+                
+                <input type="text" name="distance" placeholder="Distance ( enter approx. distance in kilometers)" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-predict">Predict Trip Duration</button>
+        </form>
+        {% if prediction %}
+        <div class="output">
+            <h2>Prediction Result:</h2>
+            {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
